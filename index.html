@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhruti Joshi | AI Prompt Engineer & Food Scientist</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary: #2563EB; /* AI Blue */
+            --secondary: #10B981; /* Food Science Green */
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --text-main: #334155;
+            --text-light: #64748B;
+            --code-bg: #1e293b;
+            --code-text: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 {
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .mono {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e2e8f0;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 160px 5% 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .badge-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .badge-ai { background: #dbeafe; color: var(--primary); }
+        .badge-food { background: #d1fae5; color: var(--secondary); }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* --- ABOUT & SKILLS --- */
+        .section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .skills-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .skills-list li {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        /* --- PORTFOLIO PROJECTS --- */
+        .projects-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .card-header h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .prompt-box {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            max-height: 200px;
+            overflow-y: auto;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            font-weight: 700;
+            margin-top: 1rem;
+            display: block;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 4rem 5%;
+            margin-top: 4rem;
+        }
+
+        .contact-email {
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: underline;
+            text-decoration-color: var(--primary);
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .grid-2 { grid-template-columns: 1fr; gap: 2rem; }
+            .nav-links { display: none; } /* Simplified for single file */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Dhruti<span>Joshi</span></div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Portfolio</a>
+            <a href="#tools">Tools</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="badge-container">
+            <span class="badge badge-ai">AI Prompt Engineer</span>
+            <span class="badge badge-food">Food Science Specialist</span>
+        </div>
+        <h1>Bridging Food Science<br>with Artificial Intelligence</h1>
+        <p class="subtitle">I design structured AI systems to solve complex challenges in food safety, compliance, and product development.</p>
+        <a href="#projects" class="btn">View AI Systems</a>
+    </header>
+
+    <section id="about" class="section">
+        <div class="grid-2">
+            <div>
+                <h2>About Me</h2>
+                <p style="margin-top: 1rem;">
+                    I am a Food Science postgraduate with expertise in microbiology, food safety, and quality assurance. I have pioneered a unique niche by combining this technical domain knowledge with advanced AI Prompt Engineering.
+                </p>
+                <p style="margin-top: 1rem;">
+                    I build reusable AI assistants that help food technologists ensure compliance, assess risks, and innovate new products efficiently.
+                </p>
+            </div>
+            <div>
+                <h3>Core Competencies</h3>
+                <ul class="skills-list">
+                    <li>System Prompt Design</li>
+                    <li>Generative AI Applications</li>
+                    <li>HACCP & Food Safety</li>
+                    <li>Label Compliance (FSSAI/FDA)</li>
+                    <li>AI Workflow Design</li>
+                    <li>Product Development</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="projects-header">
+            <h2>AI Portfolio Projects</h2>
+            <p>Reusable prompt systems designed for industry application.</p>
+        </div>
+
+        <div class="project-grid">
+
+            <div class="project-card">
+                <div class="card-header">
+                    <h3>01. Product Development Assistant</h3>
+                    <p>Ingredients, processing, and feasibility formulation.</p>
+                </div>
+                <div class="card-body">
+                    <span class="label">Objective</span>
+                    <p>Assist in developing new food products with scientific formulation guidance.</p>
+                    
+                    <span class="label">System Prompt Preview</span>
+                    <div class="prompt-box mono">
+                        You are an experienced food product development expert... assist in developing the product by suggesting suitable ingredients, explaining the function of each ingredient, and recommending an appropriate processing method...
+                    </div>
+                    
+                    <span class="label">Example Input</span>
+                    <p class="mono">"Develop a high-protein chocolate milk"</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-header">
+                    <h3>02. Safety Risk Analysis System</h3>
+                    <p>HACCP-based hazard identification and prevention.</p>
+                </div>
+                <div class="card-body">
+                    <span class="label">Objective</span>
+                    <p>Analyze handling and storage scenarios to identify microbial, chemical, and physical risks.</p>
+                    
+                    <span class="label">System Prompt Preview</span>
+                    <div class="prompt-box mono">
+                        You are an experienced food safety expert and HACCP specialist... analyze it for potential food safety risks. Identify possible hazards... Determine the risk level (low, medium, or high)...
+                    </div>
+
+                    <span class="label">Example Input</span>
+                    <p class="mono">"Milk stored at 10°C for 6 hours"</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-header">
+                    <h3>03. Label Compliance Checker</h3>
+                    <p>Regulatory analysis against FSSAI/FDA standards.</p>
+                </div>
+                <div class="card-body">
+                    <span class="label">Objective</span>
+                    <p>Evaluate food label text for ingredient order, allergens, and additive declarations.</p>
+                    
+                    <span class="label">System Prompt Preview</span>
+                    <div class="prompt-box mono">
+                        You are an experienced food regulatory expert... Check the following aspects: ingredient declaration format... allergen declaration, additive declaration with INS/E-numbers...
+                    </div>
+
+                    <span class="label">Example Input</span>
+                    <p class="mono">"Ingredients: Milk solids, sugar, emulsifier (INS 322)..."</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-header">
+                    <h3>04. Processing Tech Explainer</h3>
+                    <p>Educational breakdown of complex industrial processes.</p>
+                </div>
+                <div class="card-body">
+                    <span class="label">Objective</span>
+                    <p>Explain processing techniques with definitions, steps, and industrial examples.</p>
+                    
+                    <span class="label">System Prompt Preview</span>
+                    <div class="prompt-box mono">
+                        You are an experienced food process engineer... explain it in simple and professional language... Include: definition, purpose, step-by-step process...
+                    </div>
+
+                    <span class="label">Example Input</span>
+                    <p class="mono">"Pasteurization"</p>
+                </div>
+            </div>
+
+             <div class="project-card">
+                <div class="card-header">
+                    <h3>05. Additive Explainer System</h3>
+                    <p>Scientific details on INS/E-numbers and safety.</p>
+                </div>
+                <div class="card-body">
+                    <span class="label">Objective</span>
+                    <p>Explain food additives with regulatory context and industrial relevance.</p>
+                    
+                    <span class="label">System Prompt Preview</span>
+                    <div class="prompt-box mono">
+                        You are an experienced food additive expert... Include the following details: definition, function, INS/E-number (if available), industrial applications...
+                    </div>
+
+                    <span class="label">Example Input</span>
+                    <p class="mono">"Lecithin"</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-header">
+                    <h3>06. YouTube Script Generator</h3>
+                    <p>Content creation for Food Science education.</p>
+                </div>
+                <div class="card-body">
+                    <span class="label">Objective</span>
+                    <p>Generate engaging, scientifically accurate scripts for video content.</p>
+                    
+                    <span class="label">System Prompt Preview</span>
+                    <div class="prompt-box mono">
+                        You are an experienced food scientist and educational content creator... generate a complete YouTube script... Include: attention-grabbing hook, clear explanation...
+                    </div>
+
+                    <span class="label">Example Input</span>
+                    <p class="mono">"Pasteurization"</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="tools" class="section" style="background-color: white;">
+        <div class="grid-2">
+            <div>
+                <h2>My AI Capabilities</h2>
+                <p style="margin-top: 1rem;">I design structured AI prompt systems that function as reusable AI assistants. My engineering approach focuses on:</p>
+                <ul class="skills-list" style="margin-top: 1.5rem;">
+                    <li>Structured system prompt design</li>
+                    <li>Domain-specific AI assistant development</li>
+                    <li>AI-assisted research and analysis</li>
+                    <li>Automated Report Generation</li>
+                </ul>
+            </div>
+            <div>
+                <h2>Tools I Use</h2>
+                <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                    <div>
+                        <strong>ChatGPT</strong> <br>
+                        <span style="color: var(--text-light); font-size: 0.9rem;">Advanced System Prompt Engineering</span>
+                    </div>
+                    <div>
+                        <strong>Perplexity AI</strong> <br>
+                        <span style="color: var(--text-light); font-size: 0.9rem;">Deep Research and Analysis</span>
+                    </div>
+                    <div>
+                        <strong>Notion</strong> <br>
+                        <span style="color: var(--text-light); font-size: 0.9rem;">AI Documentation and Workflow Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2>Let's Collaborate</h2>
+        <p style="margin: 1rem 0 2rem; color: #cbd5e1;">I am available for Prompt Engineering and Food Science consultation.</p>
+        <a href="mailto:joshidhruti01@gmail.com" class="contact-email">joshidhruti01@gmail.com</a>
+        <p style="margin-top: 4rem; font-size: 0.8rem; color: #64748B;">&copy; 2024 Dhruti Joshi. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
